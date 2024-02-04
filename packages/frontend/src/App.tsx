@@ -1,11 +1,10 @@
 import type { Component } from "solid-js";
-
-import logo from "./logo.svg";
-import styles from "./App.module.css";
-import { Row } from "./components";
+import { Router, Route } from "@solidjs/router";
+import { renderRoutes } from "src/utils/router";
+import routes from "./routes";
 
 const App: Component = () => {
-  return <Row>hello</Row>;
+  return <Router>{renderRoutes(routes)}</Router>;
 };
 
 export default App;
