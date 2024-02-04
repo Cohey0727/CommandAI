@@ -1,12 +1,13 @@
 import { RouteSectionProps } from "@solidjs/router";
 import { Component } from "solid-js";
 import { Col, Row } from "src/components";
+import { SideNavigation } from "src/domains";
 
 const Root: Component<RouteSectionProps> = (props) => {
   const { children } = props;
   return (
     <Row>
-      <Col>再度</Col>
+      <SideNavigation />
       <Col>{children}</Col>
     </Row>
   );
