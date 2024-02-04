@@ -1,17 +1,21 @@
 import { Route } from "src/utils/router";
-import index from 'src/pages';
-import about from 'src/pages/about';
-import chats from 'src/pages/chats';
-import chatsChatId from 'src/pages/chats/:chatId';
-import chatsNew from 'src/pages/chats/new';
+import * as pages from "src/pages";
 
 const routes: Route[] = [
-  { path: '/', component: index },
-  { path: '/about', component: about },
-  { path: '/chats', component: chats },
-  { path: '/chats/:chatId', component: chatsChatId },
-  { path: '/chats/new', component: chatsNew },
+  {
+    path: "/",
+    component: pages.Root,
+    children: [
+      {
+        path: "/chats",
+        component: pages.Chats,
+      },
+      {
+        path: "/chats/:chatId",
+        component: pages.ChatsChatId,
+      },
+    ],
+  },
 ];
- 
 
 export default routes;

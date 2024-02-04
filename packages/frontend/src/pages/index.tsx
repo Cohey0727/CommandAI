@@ -1,13 +1,3 @@
-import type { Component } from "solid-js";
-import { Col, Row } from "src/components";
-import { RouteSectionProps } from "@solidjs/router";
-
-const Home: Component<RouteSectionProps> = (props) => {
-  return (
-    <Row>
-      <Col></Col>
-    </Row>
-  );
-};
-
-export default Home;
+export { default as Chats } from "./Chats";
+export { default as ChatsChatId } from "./ChatsChatId";
+export { default as Root } from "./Root";

@@ -9,8 +9,7 @@
     "serve": "vite preview",
     "codegen:css": "tcm src -d src -o src/styles.d.ts",
     "watch:css": "tcm src -w",
-    "codegen:routes": "ts-node -P tsconfig-node.json auto-route.ts",
-    "watch:routes": "nodemon --watch src/pages --ext ts,tsx --exec \"ts-node auto-route.ts\""
+    "check": "tsc --noEmit"
   },
   "license": "MIT",
   "devDependencies": {
