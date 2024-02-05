@@ -1,4 +1,4 @@
-import type { Component, JSX } from "solid-js";
+import { splitProps, type Component, type JSX } from "solid-js";
 import clsx from "clsx";
 import styles from "./Row.module.css";
 import { Merge } from "src/utils/types";
@@ -8,8 +8,8 @@ type OwnProps = {};
 type RowProps = Merge<BaseProps, OwnProps>;
 
 const Row: Component<RowProps> = (props) => {
-  const { class: className, ...rest } = props;
-  return <div {...rest} class={clsx(styles.root, className)} />;
+  const [ownProps, childProps] = splitProps(props, ["class"]);
+  return <div {...childProps} class={clsx(styles.root, ownProps.class)} />;
 };
 
 export type { RowProps };

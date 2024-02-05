@@ -1,6 +1,5 @@
 declare const styles: {
-  readonly "avatarContainer": string;
-  readonly "menuItem": string;
+  readonly "main": string;
   readonly "root": string;
 };
 export = styles;

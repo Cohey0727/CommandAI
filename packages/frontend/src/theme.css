@@ -1,5 +1,16 @@
 :root {
-  --primary-color: #007bff;
-  --secondary-color: #6c757d;
-  --accent-color: #28a745;
+  --primary-color: #8b0000;
+  --secondary-color: #5f9ea0;
+  --accent-color: #ffd700;
+
+  --color-white: #ffffff;
+  --color-gray-100: #f8f9fa;
+  --color-gray-200: #e9ecef;
+  --color-gray-300: #cecdcf;
+  --color-gray-400: #afa4aa;
+  --color-gray-500: #939598;
+  --color-gray-600: #78757d;
+  --color-gray-700: #54565a;
+  --color-gray-800: #444648;
+  --color-gray-900: #313539;
 }
