@@ -1,5 +1,10 @@
 import { A } from "@solidjs/router";
-import type { Component, JSX, JSXElement } from "solid-js";
+import {
+  splitProps,
+  type Component,
+  type JSX,
+  type JSXElement,
+} from "solid-js";
 import clsx from "clsx";
 import { Merge } from "src/utils/types";
 import { Button, Wrapping } from "src/components";
@@ -34,21 +39,28 @@ type ListItemProps<M extends Mode> = Merge<BaseProps, OwnProps>;
 function ListItem<M extends Mode = "default">(
   props: ListItemProps<M>
 ): JSXElement {
-  const { class: className, icon, mode = "default", children, ...rest } = props;
-  const { href } = props as LinkProps;
-  const { onClick } = props as ButtonProps;
+  const [ownProps, childProps] = splitProps(props, [
+    "class",
+    "icon",
+    "mode",
+    "children",
+  ]);
 
-  const modeStyle = styles[mode];
+  const modeStyle = styles[ownProps.mode ?? "default"];
   return (
-    <li {...rest} class={clsx(styles.root, modeStyle, className)}>
-      <Wrapping wrapper={A} wrapperProps={{ href }} when={mode === "link"}>
+    <li {...childProps} class={clsx(styles.root, modeStyle, ownProps.class)}>
+      <Wrapping
+        wrapper={A}
+        wrapperProps={{ href: (props as LinkProps).href }}
+        when={ownProps.mode === "link"}
+      >
         <Wrapping
           wrapper={Button}
-          wrapperProps={{ onClick }}
-          when={mode === "button"}
+          wrapperProps={{ onClick: (props as ButtonProps).onClick }}
+          when={ownProps.mode === "button"}
         >
-          {icon && <div class={styles.icon}>{icon}</div>}
-          <div class={styles.title}>{children}</div>
+          {ownProps.icon && <div class={styles.icon}>{ownProps.icon}</div>}
+          <div class={styles.title}>{ownProps.children}</div>
         </Wrapping>
       </Wrapping>
     </li>

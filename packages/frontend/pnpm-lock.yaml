@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@solid-primitives/destructure':
+    specifier: ^0.1.15
+    version: 0.1.15(solid-js@1.8.12)
   '@solidjs/router':
     specifier: ^0.11.3
     version: 0.11.3(solid-js@1.8.12)
@@ -730,6 +733,15 @@ packages:
       solid-js: 1.8.12
     dev: true
 
+  /@solid-primitives/destructure@0.1.15(solid-js@1.8.12):
+    resolution: {integrity: sha512-KQDTrAKXBLwjeMe2AwNcEeZi8xbMX+qo2O6TCUD4kJ6Eg6+3cuPnxCFiDSR92v0XD2Dny5M/NbBFFRFEJU8q3w==}
+    peerDependencies:
+      solid-js: ^1.6.12
+    dependencies:
+      '@solid-primitives/utils': 6.2.2(solid-js@1.8.12)
+      solid-js: 1.8.12
+    dev: false
+
   /@solid-primitives/event-bus@1.0.9(solid-js@1.8.12):
     resolution: {integrity: sha512-BI9dla3GQzINsufEzr/CV3B/9e0D1pyk7Ig6kPI6s4geUkiVgFadY5V8R95PEeHH1NagOny7AHpw+RaRIuBpkA==}
     peerDependencies:
@@ -851,7 +863,6 @@ packages:
       solid-js: ^1.6.12
     dependencies:
       solid-js: 1.8.12
-    dev: true
 
   /@solidjs/router@0.11.3(solid-js@1.8.12):
     resolution: {integrity: sha512-clSgyvzNnAw5iwnqHFNdzvvgt1eHbg81hu3A7H/qYz0+J5D0XIk7oqaOI7SRWCTnV8Rg9q4K83VV4foCOb+jcw==}
