@@ -12,12 +12,7 @@ const SideNavigation: Component<SideNavigationProps> = (props) => {
         <Avatar src="SolidJS" size="xl" />
       </Center>
       <List>
-        <ListItem
-          class={styles.menuItem}
-          href="chats"
-          mode="link"
-          icon={<RiLogosWechatPayLine />}
-        >
+        <ListItem class={styles.menuItem} href="chats" mode="link" icon={<RiLogosWechatPayLine />}>
           Chat
         </ListItem>
         <ListItem

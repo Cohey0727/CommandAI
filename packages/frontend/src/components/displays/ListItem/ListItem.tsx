@@ -1,10 +1,5 @@
 import { A } from "@solidjs/router";
-import {
-  splitProps,
-  type Component,
-  type JSX,
-  type JSXElement,
-} from "solid-js";
+import { splitProps, type Component, type JSX, type JSXElement } from "solid-js";
 import clsx from "clsx";
 import { Merge } from "src/utils/types";
 import { Button, Wrapping } from "src/components";
@@ -36,15 +31,8 @@ type OwnProps = DefaultProps | ButtonProps | LinkProps;
 
 type ListItemProps<M extends Mode> = Merge<BaseProps, OwnProps>;
 
-function ListItem<M extends Mode = "default">(
-  props: ListItemProps<M>
-): JSXElement {
-  const [ownProps, childProps] = splitProps(props, [
-    "class",
-    "icon",
-    "mode",
-    "children",
-  ]);
+function ListItem<M extends Mode = "default">(props: ListItemProps<M>): JSXElement {
+  const [ownProps, childProps] = splitProps(props, ["class", "icon", "mode", "children"]);
 
   const modeStyle = styles[ownProps.mode ?? "default"];
   return (

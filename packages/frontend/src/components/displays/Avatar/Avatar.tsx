@@ -13,21 +13,14 @@ type OwnProps = {
 type AvatarProps = Merge<BaseProps, OwnProps>;
 
 const Avatar: Component<AvatarProps> = (props) => {
-  const [ownProps, childProps] = splitProps(props, [
-    "class",
-    "src",
-    "alt",
-    "size",
-  ]);
+  const [ownProps, childProps] = splitProps(props, ["class", "src", "alt", "size"]);
   const sizeClass = styles[ownProps.size ?? "md"];
   return (
     <div class={clsx(styles.root, sizeClass, ownProps.class)}>
       <Show
         when={isValidUrl(ownProps.src)}
         fallback={
-          <div class={styles.fallback}>
-            {ownProps.alt ? ownProps.alt[0].toUpperCase() : ""}
-          </div>
+          <div class={styles.fallback}>{ownProps.alt ? ownProps.alt[0].toUpperCase() : ""}</div>
         }
       >
         <img {...childProps} alt={ownProps.alt} class={styles.img} />

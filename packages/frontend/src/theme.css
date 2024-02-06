@@ -1,7 +1,13 @@
 :root {
-  --primary-color: #8b0000;
-  --secondary-color: #5f9ea0;
+  /* サイバー感のあるカラーパレット */
+  --primary-color: #00fffc;
+  --secondary-color: #ff00ff;
   --accent-color: #ffd700;
+
+  /* 補助色 */
+  --dark-background: #0f0f0f; /* 深い黒の背景: コンテンツを際立たせる */
+  --light-background: #2e2e2e; /* 明るいグレーの背景: UI要素の背景に */
+  --hover-color: #008cff; /* ブルーネオン: ホバー時や強調表示に */
 
   --color-white: #ffffff;
   --color-gray-100: #f8f9fa;
