@@ -1,13 +1,15 @@
-use actix_web::{web, App, HttpResponse, HttpServer, Responder};
+use lambda_runtime::{service_fn, Error, LambdaEvent};
+use serde_json::{json, Value};
 
-async fn index() -> impl Responder {
-    HttpResponse::Ok().body("Hello world123!")
+async fn handler(event: LambdaEvent<Value>) -> Result<Value, Error> {
+    println!("Received event: {:?}", event);
+    let payload = event.payload;
+    let first_name = payload["firstName"].as_str().unwrap_or("world");
+    Ok(json!({ "message": format!("Hello, {first_name}!") }))
 }
 
-#[actix_web::main]
-async fn main() -> std::io::Result<()> {
-    HttpServer::new(|| App::new().route("/", web::get().to(index)))
-        .bind("127.0.0.1:8080")?
-        .run()
-        .await
+#[tokio::main]
+async fn main() -> Result<(), Error> {
+    println!("Starting lambda");
+    lambda_runtime::run(service_fn(handler)).await
 }
