@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
       target: builder
     ports:
-      - "8081:9000"
+      - "9001:9000"
     environment:
       - RUST_LOG=debug
       - AWS_ACCESS_KEY_ID=dummy-access-key-id

@@ -16,15 +16,15 @@ You need to install the following:
 ### Running on Host PC
 
 ```sh
-cargo run
-curl -XPOST "http://localhost:8080" -d "{\"firstName\": \"Taro\"}"
+cargo lambda watch
+curl -XPOST "http://localhost:9000" -d "{\"firstName\": \"Taro\"}"
 ```
 
 ### Running on Development Container
 
 ```sh
 docker compose up -d
-curl -XPOST "http://localhost:8081/2015-03-31/functions/function/invocations" -d "{\"firstName\": \"Taro\"}"
+curl -XPOST "http://localhost:9001" -d "{\"firstName\": \"Taro\"}"
 ```
 
 ### Running on Production Container

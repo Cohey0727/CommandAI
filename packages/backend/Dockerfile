@@ -1,5 +1,5 @@
 # Build and Development stage
-FROM rust:1.75.0 AS builder
+FROM rust:1.76.0 AS builder
 WORKDIR /opt/app
 # Copying dependencies first to leverage Docker cache and speed up the build
 COPY Cargo.toml Cargo.lock ./
