@@ -1,17 +1,16 @@
 import * as cdk from "aws-cdk-lib";
+import * as apigateway from "aws-cdk-lib/aws-apigatewayv2";
+import * as lambda from "aws-cdk-lib/aws-lambda";
 import { Construct } from "constructs";
+import ApiStack from "./api-stack";
 // import * as sqs from 'aws-cdk-lib/aws-sqs';
 
 class CommandAIStack extends cdk.Stack {
+  readonly gqlApi: apigateway.CfnApi;
+
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
-
-    // The code that defines your stack goes here
-
-    // example resource
-    // const queue = new sqs.Queue(this, 'InfrastructureQueue', {
-    //   visibilityTimeout: cdk.Duration.seconds(300)
-    // });
+    const a = new ApiStack(this);
   }
 }
 
