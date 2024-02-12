@@ -1,4 +1,4 @@
-# Build stage
+# Build and Development stage
 FROM rust:1.75.0 AS builder
 WORKDIR /opt/app
 # Copying dependencies first to leverage Docker cache and speed up the build
@@ -8,6 +8,9 @@ COPY src ./src
 # Installing the toolchain for cross-compilation
 RUN rustup update && \
     rustup target add aarch64-unknown-linux-gnu
+# Installing Cargo Lambda
+RUN cargo install --locked cargo-lambda
+
 # Build
 RUN cargo build --release --target aarch64-unknown-linux-gnu
 
