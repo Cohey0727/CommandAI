@@ -1,15 +1,15 @@
-// For Cargo Lambda
-use lambda_http::{
-    lambda_runtime::{self, Context},
-    Body, Error, Request, Response,
-};
+use lambda_http::{Body, Error, Request, Response};
 use serde_json::{json, Value};
 
 pub async fn handle_request(request: Request) -> Result<Response<Body>, Error> {
     println!("Rust Lambda handler started🚀");
 
     // リクエストボディを取得してJSONとしてパース
-    let body = request.body().as_str().unwrap_or_default();
+    let body = match request.body() {
+        Body::Text(text) => text,
+        Body::Binary(binary) => std::str::from_utf8(binary).unwrap_or_default(),
+        _ => "",
+    };
     let parsed_body: Value = serde_json::from_str(body).unwrap_or(json!({}));
 
     // `firstName`キーの値を取得（存在しない場合は"world"をデフォルト値とする）
@@ -26,15 +26,3 @@ pub async fn handle_request(request: Request) -> Result<Response<Body>, Error> {
         .body(Body::Text(response_body))
         .map_err(Error::from)
 }
-
-// For Lambda Runtime
-// use lambda_http::Error;
-// use lambda_runtime::LambdaEvent;
-// use serde_json::{json, Value};
-
-// pub async fn handle_request(event: LambdaEvent<Value>) -> Result<Value, Error> {
-//     println!("Rust Lambda handler started🚀");
-//     let (event, _context) = event.into_parts();
-//     let first_name = event["firstName"].as_str().unwrap_or("world");
-//     Ok(json!({ "message": format!("Hello, {}!", first_name) }))
-// }
