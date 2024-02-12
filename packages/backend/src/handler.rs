@@ -1,3 +1,4 @@
+use async_graphql::http::{playground_source, GraphQLPlaygroundConfig};
 use lambda_http::{Body, Error, Request, Response};
 use serde_json::{json, Value};
 
@@ -21,8 +22,19 @@ pub async fn handle_request(request: Request) -> Result<Response<Body>, Error> {
     // レスポンスボディを生成
     let response_body = json!({ "hello": first_name }).to_string();
 
-    Response::builder()
-        .status(200)
-        .body(Body::Text(response_body))
-        .map_err(Error::from)
+    // ブラウザからのGETリクエストをチェックして、Playgroundを返す
+    if request.uri().path() == "/graphql" && request.method() == "GET" {
+        let html = playground_source(GraphQLPlaygroundConfig::new("/graphql"));
+        print!("html: {}", html);
+        Response::builder()
+            .status(200)
+            .header("Content-Type", "text/html")
+            .body(Body::from(html))
+            .map_err(Error::from)
+    } else {
+        Response::builder()
+            .status(200)
+            .body(Body::Text(response_body))
+            .map_err(Error::from)
+    }
 }
