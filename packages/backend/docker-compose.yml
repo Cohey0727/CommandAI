@@ -6,6 +6,8 @@ services:
       context: .
       dockerfile: Dockerfile
       target: builder
+    volumes:
+      - ./src:/opt/app/src
     ports:
       - "9001:9000"
     environment:
