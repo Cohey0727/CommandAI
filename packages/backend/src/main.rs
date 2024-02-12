@@ -1,12 +1,12 @@
 use handler::handle_request;
-use lambda_http::{run, Error};
-use lambda_runtime::service_fn;
+use lambda_runtime::{service_fn, Error};
 
 mod handler;
 
 #[tokio::main]
 async fn main() -> Result<(), Error> {
-    println!("Starting lambda");
-    run(service_fn(handle_request)).await?;
+    println!("Rust Lambda main started🚀");
+    let func = service_fn(handle_request);
+    lambda_runtime::run(func).await?;
     Ok(())
 }

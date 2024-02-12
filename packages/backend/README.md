@@ -24,7 +24,7 @@ curl -XPOST "http://localhost:8080" -d "{\"firstName\": \"Taro\"}"
 
 ```sh
 docker compose up -d
-curl -XPOST "http://localhost:9000/2015-03-31/functions/function/invocations" -d "{\"firstName\": \"Taro\"}"
+curl -XPOST "http://localhost:8081/2015-03-31/functions/function/invocations" -d "{\"firstName\": \"Taro\"}"
 ```
 
 ### Running on Production Container
